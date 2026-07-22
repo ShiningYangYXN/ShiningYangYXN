@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   generate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     name: Generate GitHub profile 3D contrib
     steps:
     - uses: actions/checkout@v5
