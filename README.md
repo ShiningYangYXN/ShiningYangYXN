@@ -166,8 +166,7 @@ description = "Keep tinkering, keep enjoying"
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="https://raw.githubusercontent.com/ShiningYangYXN/ShiningYangYXN/output/github-contribution-grid-snake-dark.svg"
-"
+    srcset="https://raw.githubusercontent.com/ShiningYangYXN/ShiningYangYXN/snake/github-contribution-grid-snake-dark.svg"
   />
   <img
     alt="Contribution Snake"
@@ -191,14 +190,6 @@ description = "Keep tinkering, keep enjoying"
 
 [![ViCo-Lab](https://img.shields.io/badge/ORG-ViCo--Lab-00FF9D?style=for-the-badge&logo=github&logoColor=black)](https://github.com/ViCo-Lab)
 [![SourceTekLabs](https://img.shields.io/badge/ORG-SourceTekLabs-00B3FF?style=for-the-badge&logo=github&logoColor=black)](https://github.com/SourceTekLabs)
-
-</div>
-
-![Achievement Decrypt](https://capsule-render.vercel.app/api?type=soft&color=0:00FFF2,100:00FF9D&fontColor=0D1117&height=70&section=header&text=ACHIEVEMENT%20DECRYPT&fontSize=28&fontAlignY=50)
-
-<div align="center">
-
-![GitHub Trophies](./trophy/trophy.svg)
 
 </div>
 
