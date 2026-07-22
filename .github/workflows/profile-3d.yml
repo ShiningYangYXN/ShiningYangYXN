@@ -14,6 +14,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-slim
+    timeout-minutes: 1
     name: Generate GitHub profile 3D contrib
     steps:
     - uses: actions/checkout@v5
@@ -26,6 +27,6 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add -A .
-        if git commit -m "generated"; then
+        if git commit -m "generated 3D profile contrib"; then
           git push
         fi

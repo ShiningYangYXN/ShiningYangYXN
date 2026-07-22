@@ -14,8 +14,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-slim
-    timeout-minutes: 5
-
+    timeout-minutes: 1
     steps:
     # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
     - name: generate github-contribution-grid-snake.svg
