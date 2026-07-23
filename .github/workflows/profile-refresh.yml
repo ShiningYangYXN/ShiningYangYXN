@@ -27,15 +27,19 @@ jobs:
           snake/github-contribution-grid-snake.svg
           snake/github-contribution-grid-snake-dark.svg?palette=github-dark
 
-    # push the content of <build_dir> to an orphan branch (single commit, force overwritten)
+    # push the content to an orphan branch (single commit, force overwritten)
     - name: Force push the Snake to orphan snake branch
       run: |
+        # flatten: move generated svgs to the working directory root (no intermediate folder)
+        shopt -s dotglob
+        mv snake/* .
+        rmdir snake 2>/dev/null || true
         git config user.name github-actions
         git config user.email github-actions@github.com
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git checkout --orphan snake
         git rm -r --cached . >/dev/null 2>&1 || true
-        git add snake
+        git add ./*.svg
         git commit -m "generated snake" || true
         git push --force origin snake
 
@@ -61,6 +65,6 @@ jobs:
             git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
             git checkout --orphan 3d-contrib
             git rm -r --cached . >/dev/null 2>&1 || true
-            git add '*.svg'
+            git add ./*.svg
             git commit -m "generated 3D profile contrib" || true
             git push --force origin 3d-contrib
