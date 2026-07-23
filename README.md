@@ -147,11 +147,11 @@ description = "Keep tinkering, keep enjoying"
 <picture>
   <source
     media="(prefers-color-scheme: dark)"
-    srcset="./profile-3d-contrib/profile-night-rainbow.svg"
+    srcset="https://raw.githubusercontent.com/ShiningYangYXN/ShiningYangYXN/3d-contrib/profile-night-rainbow.svg"
   />
   <img
     width="100%"
-    src="./profile-3d-contrib/profile-gitblock.svg"
+    src="https://raw.githubusercontent.com/ShiningYangYXN/ShiningYangYXN/3d-contrib/profile-gitblock.svg"
     alt="3D Contribution"
   />
 </picture>

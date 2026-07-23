@@ -15,41 +15,52 @@ jobs:
   generate-snake:
     runs-on: ubuntu-slim
     timeout-minutes: 1
+    name: Generate GitHub profile contribution Snake
     steps:
     # generates a snake game from a github user (<github_user_name>) contributions graph, output a svg animation at <svg_out_path>
-    - name: generate github-contribution-grid-snake.svg
+    - uses: actions/checkout@v5
+    - name: Generate the Snake
       uses: Platane/snk/svg-only@v3
       with:
         github_user_name: ${{ github.repository_owner }}
         outputs: |
           snake/github-contribution-grid-snake.svg
           snake/github-contribution-grid-snake-dark.svg?palette=github-dark
-    # push the content of <build_dir> to a branch
-    # the content will be available at https://raw.githubusercontent.com/<github_user>/<repository>/<target_branch>/<file> , or as github page
 
-    - name: push github-contribution-grid-snake.svg to the output branch
-      uses: crazy-max/ghaction-github-pages@v3.1.0
-      with:
-        target_branch: snake
-        build_dir: snake
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    # push the content of <build_dir> to an orphan branch (single commit, force overwritten)
+    - name: Force push the Snake to orphan snake branch
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git checkout --orphan snake
+        git rm -r --cached . >/dev/null 2>&1 || true
+        git add snake
+        git commit -m "generated snake" || true
+        git push --force origin snake
 
   generate-3d-contrib:
       runs-on: ubuntu-slim
       timeout-minutes: 1
-      name: Generate GitHub profile 3D contrib
+      name: Generate GitHub profile 3D contribution graph
       steps:
         - uses: actions/checkout@v5
         - uses: yoshi389111/github-profile-3d-contrib@latest
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             USERNAME: ${{ github.repository_owner }}
-        - name: Commit & Push
+        # push the generated 3D contrib (flattened to branch root) to an orphan branch (single commit, force overwritten)
+        - name: Force push the 3D contribution graph to orphan 3d-contrib branch
           run: |
+            # flatten: move generated svgs to the working directory root (no intermediate folder)
+            shopt -s dotglob
+            mv profile-3d-contrib/* .
+            rmdir profile-3d-contrib 2>/dev/null || true
             git config user.name github-actions
             git config user.email github-actions@github.com
-            git add -A .
-            if git commit -m "generated 3D profile contrib"; then
-                git push
-            fi
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+            git checkout --orphan 3d-contrib
+            git rm -r --cached . >/dev/null 2>&1 || true
+            git add '*.svg'
+            git commit -m "generated 3D profile contrib" || true
+            git push --force origin 3d-contrib
