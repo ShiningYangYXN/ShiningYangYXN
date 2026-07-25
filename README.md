@@ -115,16 +115,16 @@ title       = "Building candy"
 description = "Code-oriented Animation eNgine Designed for Typst"
 
 [MISSION 02]
-title       = "Developing yuanbao-lite"
-description = "Lightweight Yuanbao-bot client built with Node.js"
+title       = "Contributing to rime_wanxiang"
+description = "The most advanced RIME schema for Chinese"
 
 [MISSION 03]
-title       = "Maintaining fcitx5-breeze"
-description = "The missing fcitx5 theme for KDE Plasma"
+title       = "Having fun tinkering"
+description = "Keep tinkering, keep enjoying"
 
 [MISSION 04]
 title       = "Exploring the open-source world"
-description = "Keep tinkering, keep enjoying"
+description = "Be yourself, be open-source"
 ```
 
 ![Data HUD](https://capsule-render.vercel.app/api?type=soft&color=0:0066FF,100:00FFF2&fontColor=0D1117&height=70&section=header&text=DATA%20HUD&fontSize=28&fontAlignY=50)
